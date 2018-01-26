@@ -1,0 +1,54 @@
+<html>
+<head>
+<script src="/js/jquery.min.js"></script>
+
+	<style>
+		table {
+			border-collapse: collapse;
+			width:50%;
+		}		
+		table, td, th {
+			border: 1px solid black;
+		}
+	</style>
+
+</head>
+<body>
+	<h1><%= title %></h1>
+
+	<a href="new">Add New</a><br/><br/> 
+	
+	<% if (rows.length > 0){ %>
+		<table>	
+			<tr>
+				<th> No. </th>
+				<th> Name </th>
+				<th> Phone </th>
+				<th> Action </th>
+			</tr>
+			<% for(var i=0; i<rows.length; i++) {%>
+				<tr>
+					<td style="text-align:center;">
+						<%= i+1 %>.
+						<input type="hidden" value="<%= rows[i].C_ID %>" id="hdID">
+					</td>
+					<td>
+						<%= rows[i].C_Name %> 
+					</td>
+					<td>
+						<%= rows[i].C_Phone %>
+					</td>
+					<td style="text-align:center;">
+						<a href="/edit/<%= rows[i].C_ID %>">Edit</a>&nbsp;
+						<a href="/delete/<%= rows[i].C_ID %>" onclick="return confirm('Are you sure you want to delete this contact?');">Delete</a>						
+					</td>
+				</tr>
+
+			<% } %>
+		</table>
+
+	<% } %>
+
+	
+</body>
+</html>
